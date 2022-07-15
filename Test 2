@@ -1,0 +1,9 @@
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Key in responseBody", function () {
+    var jsonData = JSON.parse(responseBody);
+    pm.expect(jsonData).to.have.all.keys('key');
+    pm.collectionVariables.set("auth_key", jsonData.key);
+});
